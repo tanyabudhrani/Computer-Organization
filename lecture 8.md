@@ -1,9 +1,6 @@
 # lecture 8
 
-Created: March 24, 2024 6:44 PM
-
 # internal memory
-
 - **internal** means that the CPU can have direct access — main memory, registers, cache, and ROM (read only memory)
 
 | implemented using semiconductor technology |
@@ -12,22 +9,15 @@ Created: March 24, 2024 6:44 PM
 | cope with the speed of CPU |
 
 ## internal memory types
-
-![Screenshot 2024-03-24 at 6.46.56 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.46.56_PM.png)
-
 - **random access memory (RAM)**: it is a misuse of term— all the above memory use random access method; however, we usually use RAM to refer to main memory
 
 ## memory cell
-
 - despite of the memory types, all semiconductor memory cells share common properties
     - two stable states, used to represent 0 and 1
     - can be written into (**set the state**)
     - can be read to (**sense the state**)
 
-![Screenshot 2024-03-24 at 6.48.11 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.48.11_PM.png)
-
 - three terminals for one cell:
-    
     
     | select | select the cell for read or write operations |
     | --- | --- |
@@ -35,25 +25,17 @@ Created: March 24, 2024 6:44 PM
     | data | the bit |
 
 ## implementation technologies
-
 - inside the cell, there are two common semiconductor technologies for RAM
 
 - based on **capacitors**
     - dynamic RAM
-    
-    ![Screenshot 2024-03-24 at 6.50.41 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.50.41_PM.png)
-    
     - like a small rechargeable battery there is charge or no charge inside it
 
 - based on **transistors**
     - static RAM
-    
-    ![Screenshot 2024-03-24 at 6.50.49 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.50.49_PM.png)
-    
     - it can act as a switch (ON/OFF)— three terminals: one serves as the controller of the switch
 
 ## dynamic RAM cells
-
 - data is stored as the charge of capacitors
 
 - high level of charge = 1
@@ -61,14 +43,9 @@ Created: March 24, 2024 6:44 PM
 - low level of charge = 0
 - **dynamic**: DRAM requires periodic charge refreshing to maintain data storage (capacitors have the tendency to leak charge)
 
-![Screenshot 2024-03-24 at 6.52.22 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.52.22_PM.png)
-
 - **write**: high/low voltage is applied to bit line to charge the capacitor for 1/0
-
 - **read**: charge stored in the capacitor is fed out onto the bit line
     - a **sense amplifier** can compare the capacitor voltage to a reference value
-
-![Screenshot 2024-03-24 at 6.53.18 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.53.18_PM.png)
 
 ## static RAM cells
 
@@ -83,10 +60,7 @@ Created: March 24, 2024 6:44 PM
 
 - **write**: apply high voltage (1) or low voltage (0) to bit line B → force the transistors into the proper states → corresponding stable states
 
-![Screenshot 2024-03-24 at 6.55.14 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_6.55.14_PM.png)
-
 ### DRAM vs. SRAM
-
 - **common**: volatile — need continuous power
 - differences:
     1. DRAM cell is simpler and smaller, thus denser (more cells per unit area) and less expensive
@@ -102,59 +76,37 @@ Created: March 24, 2024 6:44 PM
 - **usage**: system programs, library subroutines for frequently wanted functions
 
 ### programmable ROM
-
 - like ROM, it can be written into only once (after fabrication process) - customers can use special equipment to electrically write once
     - **idea**: each bit is locked by a fuse; initially all 1's in the chip, if burn the fuse, change 1 to 0 (write once)
 
-### read-mostly memory
+No problem! Here is the content converted into a properly formatted Markdown table:
 
-- re-write the memory, but at a higher cost
-- useful for applications in which read operations are far more frequent than write operations, but for which nonvolatile storage is required
-- three common types:
-    
-    
-    | erasable programmable ROM (eprom) | before a write operation, all the storage cells must be erased to the same initial state by exposure to ultraviolet radiation
-    
-    then write electronically
-    
-    read— exposure— write
-    
-    more flexible than PROM |
-    | --- | --- |
-    | electronically erasable programmable ROM (eeprom) | updates (write operations) happen at byte level (not entire chip) 
-    
-    however, write operation takes considerably longer than read (several hundred microseconds per byte) 
-    
-    more expensive and less dense (fewer bits per chip) than EPROM |
-    | flash memory | intermediate between EPROM and EEPROM
-    
-    erasure at block level (compared to byte-level and chip level) 
-    
-    uses an electrical erasing technology, does not provide byte-level erasure
-    
-    microchip is organized so that a section of memory cells are erased in a single action or “flash” |
+### Read-Mostly Memory
 
+- Re-write the memory, but at a higher cost
+- Useful for applications in which read operations are far more frequent than write operations, but for which nonvolatile storage is required
+- Three common types:
+
+| Type | Description |
+| --- | --- |
+| Erasable Programmable ROM (EPROM) | Before a write operation, all the storage cells must be erased to the same initial state by exposure to ultraviolet radiation. Then write electronically. Read— exposure— write. More flexible than PROM. |
+| Electronically Erasable Programmable ROM (EEPROM) | Updates (write operations) happen at byte level (not entire chip). However, write operation takes considerably longer than read (several hundred microseconds per byte). More expensive and less dense (fewer bits per chip) than EPROM. |
+| Flash Memory | Intermediate between EPROM and EEPROM. Erasure at block level (compared to byte-level and chip level). Uses an electrical erasing technology, does not provide byte-level erasure. Microchip is organized so that a section of memory cells are erased in a single action or “flash”. |
 # chip logic
-
 - semiconductor memory comes in **package chips**
     - each chip contains an array of memory cells
     - the essential task provide address to chip, and access bits— how to organize and wire the cells in chips to satisfy the needs for addressing
 - key issue is how to group cells into a logical piece of data
 
 - **one extreme**: 1 bit a time
-
 - **the other extreme**: one word a time (word: the unit for data processing in CPU)
-
 - **in between**: k bits for one chip, combine multiple chips to get a word
 
 ### example of 64 cells
-
 - read/write 1 bit a time (logical data unit = 1 bit) - each cell needs to have an address
 - $64 = 2^6$, we need 6 address lines
 - we can use a **6-to-64 decoder**— 6 input address lines, 64 output select lines each is connected to the select terminal of the cell
     - in the chip package, 6 address pins, 1 data pin
-
-![Screenshot 2024-03-24 at 9.48.26 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_9.48.26_PM.png)
 
 - logical data unit = 1 bit
     - in each cycle, we provide an address to access 1 bit— **64 cycles to access 64 bits** which too slow
@@ -167,13 +119,9 @@ Created: March 24, 2024 6:44 PM
     - access 4 bits from A, and 4 bits from B using the same address— together, it is like accessing 8 bits one time which is more flexible for different processors
 
 > the size of the logical data unit is a **key design parameter**
-> 
 
 ### example of 16-mbit DRAM
-
 - it is implemented using four 4mbit memory components, where each 4mbit component is a 2048x2048 square of cells (2^22)
-
-![Screenshot 2024-03-24 at 11.02.12 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.02.12_PM.png)
 
 - use **address** to locate (select) the cell
     - 2048 x 2048 square of cells = 2^{22} cells, intuitively, we need 22 address lines, however, there are only 11 address pins (A0 – A10)
@@ -182,8 +130,6 @@ Created: March 24, 2024 6:44 PM
 
 - **effect**: divided the 22 address lines into 2 groups, which are fed into the chip through 11 address pins separately
 
-![Screenshot 2024-03-24 at 11.03.52 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.03.52_PM.png)
-
 - 4 data lines (pins, D1 - D4), each connecting to one square
 
 - **write**: apply high/low voltage to the data lines to charge the capacitors
@@ -191,16 +137,6 @@ Created: March 24, 2024 6:44 PM
 - **read**: use a sense amplifier to sense the voltage
 - two pins to control write/read: **WE (write enable)** and **OE (output enable)**
     - we can use multiple chips to read/write a word at a time depending on the processor
-
-![Screenshot 2024-03-24 at 11.05.13 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.05.13_PM.png)
-
-### 256-kbyte DRAM
-
-![Screenshot 2024-03-24 at 11.05.36 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.05.36_PM.png)
-
-### 1-mbyte DRAM
-
-![Screenshot 2024-03-24 at 11.05.45 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.05.45_PM.png)
 
 # memory errors
 
@@ -218,24 +154,15 @@ Created: March 24, 2024 6:44 PM
 - example: we know there are an even number of 1's in the data (detection is easy) but there could be multiple combinations of errors |
 
 ## coding theory
-
 - **general idea**: use redundancy to encode the conditions for which correct data should satisfy
     - redundancy is a function of original data: **K = f(M)**
 
-![Screenshot 2024-03-24 at 11.08.49 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.08.49_PM.png)
-
-## framework of error correction
-
-![Screenshot 2024-03-24 at 11.09.21 PM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-24_at_11.09.21_PM.png)
-
 ### example
-
 - we want to download a file M— along with the file, we can also download a hash value of the file: SHA1 = Hash(M)
 - after download, we can generate SHA1' = Hash(M')
     - **by comparing SHA1' and SHA1, we can know whether M' = M**
 
 ## single parity code
-
 - settings
     - original data block M has 7 bits (abuse of term, M = 7)
     - attach a single bit K to the end of block (K=1)
@@ -243,32 +170,27 @@ Created: March 24, 2024 6:44 PM
 - given M, we need to decide K
 
 ### encoding rule
-
 - function f(D) = number of 1's in data block D
 - rule: add K such that f(M ǁ K) is even (even parity)
     - example: M = 000 0011, f(M) = 2 → set K = 0 | M = 110 0111, f(M) = 5 → set K = 1
 - we also could have odd parity
 
 ## one error detection
-
 - the single parity code is able to detect one error
     - suppose the stored data is D, we can compute f(D)— if f(D) is even → no error; else one error
 - note that the above detection algorithm relies on one essential assumption: there is at most one error
 
 - case 1: no error
-
 - case 2: yes error
 
 > also note that, we can only detect error, we do not know the position of the error (cannot correct the error)
-> 
+
 
 ## general case
-
 - consider one error correcting code
     - original data M bits, redundancy K bits; **together N = M + K bits**
     - our goal is to correct one error (if happens)— in other words, know the position of the error
 - there are a total of (N+1) cases:
-    
     
     | case 0 | no error |
     | --- | --- |
@@ -278,20 +200,16 @@ Created: March 24, 2024 6:44 PM
     
 
 > **coding theory** deals with the realization of the above encoding process using mathematical tools
-> 
 
 - **overhead**: K/M, which is the redundancy ratio
     - M = 4 -> K = 3 ( 2^3 = 8 >= 4 + 3 +1); K/M = 3/4
     - M = 8 -> K = 4 ( 2^4 = 16 >= 8 + 4 +1); K/M = 4/8
     - M = 16 -> K = 5 ( 2^5 = 32 >= 16 + 5 +1); K/M = 5/16
     - **as M increases, the overhead decreases**
-    
 
 > so is M the larger the better? no! the fundamental assumption is at most one error, so as M increases, the probability of having more errors also goes up
-> 
 
 ## (7-4) hamming code
-
 - the classical one-error code, with (7-4) the most common setting
     - **N = 7, M = 4 (original data), K = 3 (redundancy bits)**
 - similar to the single parity code, however, we will now use three parity bits
@@ -301,11 +219,6 @@ Created: March 24, 2024 6:44 PM
     - **hamming distance (d)**: the number of different bits— hamming distance between every two code words is 3
 
 ### example
-
-![Screenshot 2024-03-25 at 12.01.32 AM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-25_at_12.01.32_AM.png)
-
 - circle B is correct (even parity)
 - error happens in A and C (assume one error)
 - the common erroneous bit is 0
-
-![Screenshot 2024-03-25 at 12.03.33 AM.png](lecture%208%206fbf2ea84ada44a387caf6c8a11513ac/Screenshot_2024-03-25_at_12.03.33_AM.png)
